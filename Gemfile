@@ -29,7 +29,6 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 1.2'
 
 # Add 'postgresql' for database adapter
-gem 'pg'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -42,7 +41,9 @@ group :development do
 end
 
 group :production do
-  gem 'rails_12factor', '0.0.2'
+  gem 'rails_12factor', '0.0.2' #Heroku treats logs as streams and requires your logs to be sent to STDOUT. To enable STDOUT logging in Rails 4 you can add the rails_12factor gem. This gem will also configure your app to serve assets in production.
+  gem 'unicorn'
+  gem 'pg' #Your application needs to be configured to use the Postgres database. Newly generated Rails 4 applications are configured to use sqlite.
 end
 
 group :test do
