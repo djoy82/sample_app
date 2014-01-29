@@ -14,7 +14,26 @@ describe PagesController do
       expect(response).to be_success
     end
     it {should have_title(" #{base_title} | Home")} 
-    it {should have_content("Sample App")}
+    it {should have_selector('h1', text: "Sample App")}
+  
+    it "should have the right links on the layout" do
+      visit root_path
+      click_link "About Us"
+      expect(page).to have_title("About Us")
+      click_link "Contact Us"
+      expect(page).to have_title("Contact Us")
+      click_link "Home"
+      expect(page).to have_title("Home")
+      click_link "Help"
+      expect(page).to have_title("Help")
+      click_link "Home"
+      click_link "Sign up now!"
+      expect(page).to have_title("Sign Up")
+      click_link "sample app"
+      expect(page).to have_title("About Us")
+    end
+
+
   end
 
 
@@ -25,7 +44,7 @@ describe PagesController do
       expect(response).to be_success
     end
     it {should have_title(" #{base_title} | Contact Us")} 
-    it {should have_content("Contact Us")}
+    it {should have_selector('h1', text: "Contact Us")}
   end
 
   describe "GET 'about'" do
@@ -35,7 +54,7 @@ describe PagesController do
       expect(response).to be_success
     end
     it {should have_title(" #{base_title} | About Us")} 
-    it {should have_content("About Us")}
+    it {should have_selector('h1', text: "About Us")}
   end
 
   describe "GET 'help'" do
@@ -45,6 +64,6 @@ describe PagesController do
       expect(response).to be_success
     end
     it {should have_title(" #{base_title} | Help")} 
-    it {should have_content("Help")}
+    it {should have_selector('h1', text: "Help")}
   end
 end
