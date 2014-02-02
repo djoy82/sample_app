@@ -32,6 +32,9 @@ gem 'jbuilder', '~> 1.2'
 
 gem 'bootstrap-sass', '2.3.2.0'
 
+# Add bcrypt-ruby for password encryption
+gem 'bcrypt-ruby', '3.0.0'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
